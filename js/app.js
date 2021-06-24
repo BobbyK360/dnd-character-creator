@@ -2,7 +2,8 @@
 const rollEl = document.getElementById("roll");
 const selectEl = document.querySelectorAll("select");
 let bonusArray = [];
-// selectEl.values;
+let attPriority = [];
+let characterArray = [];
 
 function rollDice(diceType, diceNumber) {
   // Rolling the dice, pushing it to array & sorting
@@ -12,7 +13,6 @@ function rollDice(diceType, diceNumber) {
     rollArray.push(roll);
   }
   rollArray.sort(numberCompare);
-  console.log(rollArray);
 
   //Creating an array of real stats
   bonusArray = [];
@@ -28,7 +28,14 @@ function rollDice(diceType, diceNumber) {
     } //This accounts for 9 returning -0
     bonusArray.push(statValue);
   }
-  console.log(bonusArray);
+}
+
+function returnAttPriorityArray() {
+  attPriority = [];
+  for (let i = 0; i < selectEl.length; i++) {
+    attValue = selectEl[i].value;
+    attPriority.push(attValue);
+  }
 }
 
 function numberCompare(a, b) {
@@ -38,4 +45,22 @@ function numberCompare(a, b) {
 //Event Listeners
 rollEl.addEventListener("click", () => {
   rollDice(20, 6);
+  returnAttPriorityArray();
+  let characterObject = new Character();
+  console.log(bonusArray);
+  console.log(attPriority);
+  console.log(characterObject);
+  characterArray.push(characterObject);
+  console.log(characterArray);
 });
+
+class Character {
+  constructor() {
+    this.strength = bonusArray[attPriority.indexOf("strength")];
+    this.dexterity = bonusArray[attPriority.indexOf("dexterity")];
+    this.constitution = bonusArray[attPriority.indexOf("constitution")];
+    this.intelligence = bonusArray[attPriority.indexOf("intelligence")];
+    this.wisdom = bonusArray[attPriority.indexOf("wisdom")];
+    this.charisma = bonusArray[attPriority.indexOf("charisma")];
+  }
+}
