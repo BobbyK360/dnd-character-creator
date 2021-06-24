@@ -38,6 +38,7 @@ function returnAttPriorityArray() {
   }
 }
 
+
 function numberCompare(a, b) {
   return b - a;
 }
