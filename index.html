@@ -1,91 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
     <title>DnD Character Creator</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="character-selector">
-        <div class="dice-roll">
-            <button id="roll">Roll!</button>
+      <div class="dice-roll">
+        <button id="roll">Roll!</button>
+      </div>
+      <div class="stat-priority">
+        <div class="select-wrapper">
+          <!-- <div class="selector">
+            <span>Priority One</span>
+            <select name="priority-one" id="priority-one">
+              <option value="strength">Strength</option>
+              <option value="dexterity">Dexterity</option>
+              <option value="constitution">Constitution</option>
+              <option value="intelligence">Intelligence</option>
+              <option value="wisdom">Wisdom</option>
+              <option value="charisma">Charisma</option>
+            </select>
+          </div>
+          <div class="selector">
+            <span>Priority Two</span>
+            <select name="priority-two" id="priority-two">
+              <option value="strength">Strength</option>
+              <option value="dexterity">Dexterity</option>
+              <option value="constitution">Constitution</option>
+              <option value="intelligence">Intelligence</option>
+              <option value="wisdom">Wisdom</option>
+              <option value="charisma">Charisma</option>
+            </select>
+          </div>
+          <div class="selector">
+            <span>Priority Three</span>
+            <select name="priority-three" id="priority-three">
+              <option value="strength">Strength</option>
+              <option value="dexterity">Dexterity</option>
+              <option value="constitution">Constitution</option>
+              <option value="intelligence">Intelligence</option>
+              <option value="wisdom">Wisdom</option>
+              <option value="charisma">Charisma</option>
+            </select>
+          </div>
+          <div class="selector">
+            <span>Priority Four</span>
+            <select name="priority-four" id="priority-four">
+              <option value="strength">Strength</option>
+              <option value="dexterity">Dexterity</option>
+              <option value="constitution">Constitution</option>
+              <option value="intelligence">Intelligence</option>
+              <option value="wisdom">Wisdom</option>
+              <option value="charisma">Charisma</option>
+            </select>
+          </div>
+          <div class="selector">
+            <span>Priority Five</span>
+            <select name="priority-five" id="priority-five">
+              <option value="strength">Strength</option>
+              <option value="dexterity">Dexterity</option>
+              <option value="constitution">Constitution</option>
+              <option value="intelligence">Intelligence</option>
+              <option value="wisdom">Wisdom</option>
+              <option value="charisma">Charisma</option>
+            </select>
+          </div>
+          <div class="selector">
+            <span>Priority Six</span>
+            <select name="priority-six" id="priority-six">
+              <option value="strength">Strength</option>
+              <option value="dexterity">Dexterity</option>
+              <option value="constitution">Constitution</option>
+              <option value="intelligence">Intelligence</option>
+              <option value="wisdom">Wisdom</option>
+              <option value="charisma">Charisma</option>
+            </select>
+          </div> -->
+
+          <ul>
+            <li class="draggable-element" value="strength" draggable="true">Strength</li>
+            <li class="draggable-element" value="dexterity" draggable="true">Dexterity</li>
+            <li class="draggable-element" value="constitution" draggable="true">Constitution</li>
+            <li class="draggable-element" value="intelligence" draggable="true">Intelligence</li>
+            <li class="draggable-element" value="wisdom" draggable="true">Wisdom</li>
+            <li class="draggable-element" value="charisma" draggable="true">Charisma</li>
+          </ul>
         </div>
-        <div class="stat-priority">
-                <div class="select-wrapper">
-                    <div class="selector">
-                        <span>Priority One</span>
-                        <select name="priority-one" id="priority-one">
-                            <option value="strength">Strength</option>
-                            <option value="dexterity">Dexterity</option>
-                            <option value="constitution">Constitution</option>
-                            <option value="intelligence">Intelligence</option>
-                            <option value="wisdom">Wisdom</option>
-                            <option value="charisma">Charisma</option>
-                        </select>
-                    </div>
-                    <div class="selector">
-                        <span>Priority Two</span>
-                        <select name="priority-two" id="priority-two">
-                            <option value="strength">Strength</option>
-                            <option value="dexterity">Dexterity</option>
-                            <option value="constitution">Constitution</option>
-                            <option value="intelligence">Intelligence</option>
-                            <option value="wisdom">Wisdom</option>
-                            <option value="charisma">Charisma</option>
-                        </select>
-                    </div>
-                    <div class="selector">
-                        <span>Priority Three</span>
-                        <select name="priority-three" id="priority-three">
-                            <option value="strength">Strength</option>
-                            <option value="dexterity">Dexterity</option>
-                            <option value="constitution">Constitution</option>
-                            <option value="intelligence">Intelligence</option>
-                            <option value="wisdom">Wisdom</option>
-                            <option value="charisma">Charisma</option>
-                        </select>
-                    </div>
-                    <div class="selector">
-                        <span>Priority Four</span>
-                        <select name="priority-four" id="priority-four">
-                            <option value="strength">Strength</option>
-                            <option value="dexterity">Dexterity</option>
-                            <option value="constitution">Constitution</option>
-                            <option value="intelligence">Intelligence</option>
-                            <option value="wisdom">Wisdom</option>
-                            <option value="charisma">Charisma</option>
-                        </select>
-                    </div>
-                    <div class="selector">
-                        <span>Priority Five</span>
-                        <select name="priority-five" id="priority-five">
-                            <option value="strength">Strength</option>
-                            <option value="dexterity">Dexterity</option>
-                            <option value="constitution">Constitution</option>
-                            <option value="intelligence">Intelligence</option>
-                            <option value="wisdom">Wisdom</option>
-                            <option value="charisma">Charisma</option>
-                        </select>
-                    </div>
-                    <div class="selector">
-                        <span>Priority Six</span>
-                        <select name="priority-six" id="priority-six">
-                            <option value="strength">Strength</option>
-                            <option value="dexterity">Dexterity</option>
-                            <option value="constitution">Constitution</option>
-                            <option value="intelligence">Intelligence</option>
-                            <option value="wisdom">Wisdom</option>
-                            <option value="charisma">Charisma</option>
-                        </select>
-                    </div>
-                </div>
-            </form>
-        </div>
+      </div>
     </div>
     <div class="character-sheet"></div>
-    
     <script src="js/app.js"></script>
-</body>
+  </body>
 </html>

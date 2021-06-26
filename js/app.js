@@ -5,6 +5,56 @@ let bonusArray = [];
 let attPriority = [];
 let characterArray = [];
 
+//Draggable attribute priority
+const draggableEl = document.querySelectorAll(".draggable-element");
+const dropzone = document.querySelectorAll(".select-wrapper ul");
+
+draggableEl.forEach((dragEl) => {
+  dragEl.addEventListener("mousedown", () => {
+    dragEl.classList.add("being-dragged");
+  });
+  dragEl.addEventListener("touchstart", () => {
+    dragEl.classList.add("being-dragged");
+  });
+
+  dragEl.addEventListener("dragend", () => {
+    dragEl.classList.remove("being-dragged");
+  });
+});
+
+dropzone.forEach((container) => {
+  container.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    const afterElement = getDragAfterElement(container, e.clientY);
+    const dragEl = document.querySelector(".being-dragged");
+    if (afterElement == null) {
+      container.appendChild(dragEl);
+    } else {
+    container.insertBefore(dragEl, afterElement);
+    }
+  });
+});
+
+function getDragAfterElement(dropzone, y) {
+  const dragEl = Array.from(
+    dropzone.querySelectorAll(".draggable-element:not(.being-dragged)")
+  );
+
+  return dragEl.reduce(
+    (closest, child) => {
+      const attBox = child.getBoundingClientRect();
+      const offset = y - attBox.top - attBox.height / 2;
+      if (offset < 0 && offset > closest.offset) {
+        return { offset: offset, element: child };
+      } else {
+        return closest;
+      }
+    },
+    { offset: Number.NEGATIVE_INFINITY }
+  ).element;
+}
+
+//Dice & Object Function
 function rollDice(diceType, diceNumber) {
   // Rolling the dice, pushing it to array & sorting
   let rollArray = [];
@@ -38,7 +88,6 @@ function returnAttPriorityArray() {
   }
 }
 
-
 function numberCompare(a, b) {
   return b - a;
 }
@@ -69,10 +118,7 @@ rollEl.addEventListener("click", () => {
   rollDice(20, 6);
   let characterObject = new Character();
   characterArray.push(characterObject);
-  // console.log(bonusArray);
-  // console.log(attPriority);
-  // console.log(characterObject);
-  console.log(characterArray);
+  console.table(characterArray);
 });
 
 class Character {

@@ -9,7 +9,6 @@
 body {
     height: 100vh;
     width: 100%;
-    /* background-color: grey; */
     display: flex;
     font-family:Verdana, Geneva, Tahoma, sans-serif
 }
@@ -27,7 +26,6 @@ body {
     background-color: lightblue;
     width: 100%;
     flex: 1;
-    /* height: 100%; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,24 +64,24 @@ body {
     font-size: 1.5rem;
 }
 
-.selector {
-    /* background-color: grey; */
-    width: 60%;
-    min-width: 400px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    text-align: start;
+.select-wrapper ul {
+    list-style: none;
+    transition: all .2s ease-in-out;
 }
 
-.selector select {
+.draggable-element {
+    padding: 1rem;
+    text-align: center;
+    margin: 5px;
+    background-color: white;
+    border: 1px solid black;
+    cursor: move;
+    transition: all .5s ease-in-out;
+}
+
+.being-dragged {
     transform: scale(1.1);
-    /* width: 100%; */
-    /* display: block;
-    height: 200px; */
 }
-
 
 .character-sheet {
     flex: 3;
