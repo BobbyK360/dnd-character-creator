@@ -92,29 +92,9 @@ function numberCompare(a, b) {
   return b - a;
 }
 
-function isDuplicate(array) {
-  const compareArray = [];
-  const duplicateArray = [];
-  for (const str of array) {
-    if (!compareArray.includes(str)) {
-      compareArray.push(str);
-    } else {
-      duplicateArray.push(str);
-    }
-  }
-  if (duplicateArray.length !== 0) {
-    return true;
-  }
-}
-
 //Event Listeners
 rollEl.addEventListener("click", () => {
   returnAttPriorityArray();
-  // const isDup = isDuplicate(attPriority);
-  // if (isDup) {
-  //   alert("Please set a different stat for each priority");
-  //   return;
-  // }
   rollDice(20, 6);
   let characterObject = new Character();
   characterArray.push(characterObject);
