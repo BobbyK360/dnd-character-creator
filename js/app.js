@@ -1,6 +1,5 @@
 //Global scope
 const rollEl = document.getElementById("roll");
-const selectEl = document.querySelectorAll("select");
 let bonusArray = [];
 let attPriority = [];
 let characterArray = [];
@@ -30,7 +29,7 @@ dropzone.forEach((container) => {
     if (afterElement == null) {
       container.appendChild(dragEl);
     } else {
-    container.insertBefore(dragEl, afterElement);
+      container.insertBefore(dragEl, afterElement);
     }
   });
 });
@@ -82,8 +81,9 @@ function rollDice(diceType, diceNumber) {
 
 function returnAttPriorityArray() {
   attPriority = [];
+  const selectEl = document.querySelectorAll(".draggable-element");
   for (let i = 0; i < selectEl.length; i++) {
-    attValue = selectEl[i].value;
+    attValue = selectEl[i].dataset.value;
     attPriority.push(attValue);
   }
 }
@@ -110,11 +110,11 @@ function isDuplicate(array) {
 //Event Listeners
 rollEl.addEventListener("click", () => {
   returnAttPriorityArray();
-  const isDup = isDuplicate(attPriority);
-  if (isDup) {
-    alert("Please set a different stat for each priority");
-    return;
-  }
+  // const isDup = isDuplicate(attPriority);
+  // if (isDup) {
+  //   alert("Please set a different stat for each priority");
+  //   return;
+  // }
   rollDice(20, 6);
   let characterObject = new Character();
   characterArray.push(characterObject);

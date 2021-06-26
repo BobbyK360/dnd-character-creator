@@ -81,6 +81,7 @@ body {
 
 .being-dragged {
     transform: scale(1.1);
+    opacity: .5;
 }
 
 .character-sheet {
