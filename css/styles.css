@@ -1,90 +1,201 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    font-family:Verdana, Geneva, Tahoma, sans-serif
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* background-color: #6b0f1a; */
+  background-image: linear-gradient(315deg, #6b0f1a 0%, #b91372 74%);
 }
 
 .character-selector {
-    flex: 2;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  flex: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: grey; */
 }
 
-.dice-roll {
-    background-color: lightblue;
-    width: 100%;
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.variables-container {
+  /* background-color: white; */
+  /* height: 90%; */
+  width: 100%;
+  display: flex;
 }
-
-.dice-roll button {
-    display: block;
-    font-size: 3rem;
-    width: 200px;
-    height: 100px;
-    background-color: #fff;
-    box-shadow: 2px 2px 2px #111;
-    border: 0px solid transparent;
-    text-shadow: 0px solid transparent;
-}
-
-.dice-roll button:focus {
-    background-color: green;
-}
-
 
 .stat-priority {
-    flex: 1;
-    width: 100%;
-    background-color: lightgreen;
+  flex: 1;
+  width: 100%;
+  /* height: 50%; */
+  /* background-color: lightgreen; */
 }
 
 .select-wrapper {
-    width: 100%;
-    height: 100%;
-    background-color: pink;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    font-size: 1.5rem;
+  width: 100%;
+  /* height: 100%; */
+  /* background-color: pink; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 1.5rem;
 }
 
 .select-wrapper ul {
-    list-style: none;
-    transition: all .2s ease-in-out;
+  list-style: none;
+  transition: all 0.2s ease-in-out;
 }
 
 .draggable-element {
-    padding: 1rem;
-    text-align: center;
-    margin: 5px;
-    background-color: white;
-    border: 1px solid black;
-    cursor: move;
-    transition: all .5s ease-in-out;
+  padding: 8px;
+  text-align: center;
+  margin: 10px;
+  background-color: #fff;
+  border: 1px solid #fff;
+  cursor: move;
+  transition: all 0.2s ease-in-out;
+  background-color: transparent;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.draggable-element:hover {
+  opacity: 0.7;
+  /* border-color: transparent; */
+}
+
+[data-value="strength"] {
+  /* background-color: red; */
+  /* background-color: #6b0f1a; */
+  background-image: linear-gradient(315deg, #6b0f1a 0%, #b91372 74%);
+}
+[data-value="dexterity"] {
+  /* background-color: green; */
+  /* background-color: #7ee8fa; */
+  background-image: linear-gradient(315deg, #7ee8fa 0%, #80ff72 74%);
+}
+[data-value="constitution"] {
+  /* background-color: orange; */
+  /* background-color #ff4e00; */
+  background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
+}
+[data-value="intelligence"] {
+  /* background-color: blue; */
+  /* background-color: #2a2a72; */
+  background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+}
+[data-value="wisdom"] {
+  /* background-color: gold; */
+  /* background-color #ebbe9b; */
+  background-image: linear-gradient(315deg, #ebbe9b 0%, #e7a977 74%);
+}
+[data-value="charisma"] {
+  /* background-color: purple; */
+  /* background-color: #f8ceec; */
+  background-image: linear-gradient(315deg, #f8ceec 0%, #a88beb 74%);
 }
 
 .being-dragged {
-    transform: scale(1.1);
-    opacity: .5;
+  transform: scale(1.1);
+  opacity: 0.5;
+}
+
+.dice-roll {
+  /* background-color: lightblue; */
+  width: 100%;
+  height: 10%;
+  /* flex: 1; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dice-roll button {
+  display: block;
+  font-size: 2.5rem;
+  width: 200px;
+  height: 50px;
+  /* background-color: #fff; */
+  box-shadow: 2px 2px 2px #111;
+  border: 0px solid transparent;
+  text-shadow: 0px solid transparent;
+}
+
+.class-wrapper {
+  flex: 1;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.name-input,
+.class-selector,
+.background-selector,
+.level-selector {
+  flex: 1;
+  /* color: white; */
+  font-size: 1.5rem;
+  text-align: center;
+  vertical-align: middle;
+  display: flex;
+  padding: 5px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* .name-input {
+  background-color: teal;
+} */
+
+.name-input input {
+  width: 100%;
+  max-width: 100px;
+  height: 30%;
+  text-align: center;
+}
+
+/* .class-selector {
+  background-color: lightblue;
+} */
+
+.name-input input,
+.class-selector select,
+.background-selector select,
+.level-selector input {
+  margin: 5px;
+}
+
+.background-selector {
+  /* background-color: lightgoldenrodyellow; */
+  font-size: 0.8rem;
+}
+
+.level-selector {
+  /* background-color: lightseagreen; */
+  display: block;
+}
+
+.skills-wrapper {
+  width: 100%;
+  height: 100%;
+  /* background-color: thistle; */
+}
+
+.dice-roll button:focus {
+  background-color: green;
 }
 
 .character-sheet {
-    flex: 3;
-    background-color: grey;
+  flex: 3;
+  /* background-color: grey; */
 }

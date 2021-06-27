@@ -9,20 +9,91 @@
   </head>
   <body>
     <div class="character-selector">
+      <div class="variables-container">
+        <div class="stat-priority">
+          <div class="select-wrapper">
+            <ul>
+              <li
+                class="draggable-element"
+                draggable="true"
+                data-value="strength"
+              >
+                Strength
+              </li>
+              <li
+                class="draggable-element"
+                draggable="true"
+                data-value="dexterity"
+              >
+                Dexterity
+              </li>
+              <li
+                class="draggable-element"
+                draggable="true"
+                data-value="constitution"
+              >
+                Constitution
+              </li>
+              <li
+                class="draggable-element"
+                draggable="true"
+                data-value="intelligence"
+              >
+                Intelligence
+              </li>
+              <li
+                class="draggable-element"
+                draggable="true"
+                data-value="wisdom"
+              >
+                Wisdom
+              </li>
+              <li
+                class="draggable-element"
+                draggable="true"
+                data-value="charisma"
+              >
+                Charisma
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="class-wrapper">
+          <div class="name-input">
+            <label for="class">Class</label>
+            <input type="text" id="class" name="class" />
+          </div>
+          <div class="class-selector">
+            <label for="class">Class</label>
+            <select name="class" id="class">
+              <option value="">Wizard</option>
+              <option value="">Barbarian</option>
+            </select>
+          </div>
+          <div class="background-selector">
+            <label for="background">Background</label>
+            <select name="background" id="background">
+              <option value="">Criminal</option>
+              <option value="">Sage</option>
+            </select>
+          </div>
+          <div class="level-selector">
+            <label for="level">Level</label>
+            <input
+              type="range"
+              min="1"
+              max="20"
+              value="1"
+              id="level"
+              name="level"
+            />
+            <span class="level-display">1</span>
+          </div>
+        </div>
+      </div>
+      <div class="skills-wrapper"></div>
       <div class="dice-roll">
         <button id="roll">Roll!</button>
-      </div>
-      <div class="stat-priority">
-        <div class="select-wrapper">
-          <ul>
-            <li class="draggable-element" draggable="true" data-value="strength">Strength</li>
-            <li class="draggable-element" draggable="true" data-value="dexterity">Dexterity</li>
-            <li class="draggable-element" draggable="true" data-value="constitution">Constitution</li>
-            <li class="draggable-element" draggable="true" data-value="intelligence">Intelligence</li>
-            <li class="draggable-element" draggable="true" data-value="wisdom">Wisdom</li>
-            <li class="draggable-element" draggable="true" data-value="charisma">Charisma</li>
-          </ul>
-        </div>
       </div>
     </div>
     <div class="character-sheet"></div>
