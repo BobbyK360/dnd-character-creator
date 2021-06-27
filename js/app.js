@@ -127,6 +127,15 @@ function getLevel() {
   characterInfo.push(characterLevel.value);
 }
 
+function getProficiencies() {
+  const selectedChecks = document.querySelectorAll(".check:checked");
+  const selectedChecksArray = [];
+  for (let i = 0; i < selectedChecks.length; i++) {
+    selectedChecksArray.push(selectedChecks[i].value);
+  }
+  characterInfo.push(selectedChecksArray);
+}
+
 //Checking checkboxes for skill proficiencies
 const profChecks = document.querySelectorAll(".check");
 const maxChecks = 3;
@@ -176,6 +185,7 @@ rollEl.addEventListener("click", () => {
   getRace();
   getBackground();
   getLevel();
+  getProficiencies();
   returnAttPriorityArray();
   rollDice(20, 6);
   let characterObject = new Character();
@@ -190,6 +200,7 @@ class Character {
     this.race = characterInfo[2]
     this.background = characterInfo[3];
     this.level = characterInfo[4];
+    this.proficiencies = characterInfo[5];
     this.strength = bonusArray[attPriority.indexOf("strength")];
     this.dexterity = bonusArray[attPriority.indexOf("dexterity")];
     this.constitution = bonusArray[attPriority.indexOf("constitution")];
