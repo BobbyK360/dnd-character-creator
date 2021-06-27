@@ -1,8 +1,9 @@
 //Global scope
 const rollEl = document.getElementById("roll");
-let bonusArray = [];
-let attPriority = [];
-let characterArray = [];
+const bonusArray = [];
+const attPriority = [];
+const characterInfo = [];
+const characterArray = [];
 
 //Draggable attribute priority
 const draggableEl = document.querySelectorAll(".draggable-element");
@@ -62,7 +63,7 @@ function rollDice(diceType, diceNumber) {
   rollArray.sort(numberCompare);
 
   //Creating an array of real stats
-  bonusArray = [];
+  bonusArray.splice(0, bonusArray.length);
   for (let i = 0; i < rollArray.length; i++) {
     let statValue = rollArray[i] - 10;
     if (statValue < 0) {
@@ -78,7 +79,7 @@ function rollDice(diceType, diceNumber) {
 }
 
 function returnAttPriorityArray() {
-  attPriority = [];
+  attPriority.splice(0, attPriority.length);
   const selectEl = document.querySelectorAll(".draggable-element");
   for (let i = 0; i < selectEl.length; i++) {
     attValue = selectEl[i].dataset.value;
@@ -90,8 +91,91 @@ function numberCompare(a, b) {
   return b - a;
 }
 
+//Change the other variables/inputs for a class
+const characterLevel = document.getElementById("level");
+
+characterLevel.addEventListener("input", () => {
+  let levelDisplay = document.querySelector(".level-display");
+  levelDisplay.innerHTML = characterLevel.value;
+});
+
+function getName() {
+  characterInfo.splice(0, characterInfo.length);
+  let characterName = document.getElementById("name").value;
+  if (characterName === "") {
+    characterName = "No name";
+  }
+  characterInfo.push(`${characterName}`);
+}
+
+function getClass() {
+  const characterClass = document.getElementById("class").value;
+  characterInfo.push(characterClass);
+}
+
+function getRace() {
+  const characterRace = document.getElementById('race').value;
+  characterInfo.push(characterRace);
+}
+
+function getBackground() {
+  const characterBackground = document.getElementById("background").value;
+  characterInfo.push(characterBackground);
+}
+
+function getLevel() {
+  characterInfo.push(characterLevel.value);
+}
+
+//Checking checkboxes for skill proficiencies
+const profChecks = document.querySelectorAll(".check");
+const maxChecks = 3;
+const proficienciesEl = document.querySelector('.remaining-prof span');
+let checksLeftGlobal = maxChecks;
+
+for (let i = 0; i < profChecks.length; i++) {
+  profChecks[i].onclick = checkLimiter;
+
+  function checkLimiter() {
+    const selectedChecks = document.querySelectorAll(".check:checked");
+    let checksLeft = maxChecks - selectedChecks.length;
+
+    const profUnchecked = document.querySelectorAll(".check:not(:checked)");
+
+    for (let j = 0; j < profUnchecked.length; j++) {
+      if (checksLeft === 0) {
+        profUnchecked[j].disabled = true;
+      } else {
+        profUnchecked[j].disabled = false;
+      }
+      proficienciesEl.innerHTML = `${checksLeft}`;
+      checksLeftGlobal = checksLeft;
+    }
+    console.log(checksLeft);
+  }
+}
+
+//Update proficiencies left when race is selected.
+const characterRaceContainer = document.querySelector('.race-selector');
+const characterRace = document.querySelectorAll('.race-selector select');
+
+characterRaceContainer.addEventListener("click", () => {
+    proficienciesEl.innerHTML = `${checksLeftGlobal}`;
+})
+
+// for (let i = 0; i < characterRace.length; i++) {
+//   characterRaceContainer.addEventListener("input", () => {
+//     proficienciesEl.innerHTML = `${checksLeftGlobal}`;
+//   })
+// }
+
 //Event Listeners
 rollEl.addEventListener("click", () => {
+  getName();
+  getClass();
+  getRace();
+  getBackground();
+  getLevel();
   returnAttPriorityArray();
   rollDice(20, 6);
   let characterObject = new Character();
@@ -101,6 +185,11 @@ rollEl.addEventListener("click", () => {
 
 class Character {
   constructor() {
+    this.name = characterInfo[0];
+    this.class = characterInfo[1];
+    this.race = characterInfo[2]
+    this.background = characterInfo[3];
+    this.level = characterInfo[4];
     this.strength = bonusArray[attPriority.indexOf("strength")];
     this.dexterity = bonusArray[attPriority.indexOf("dexterity")];
     this.constitution = bonusArray[attPriority.indexOf("constitution")];

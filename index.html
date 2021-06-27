@@ -60,21 +60,28 @@
         </div>
         <div class="class-wrapper">
           <div class="name-input">
-            <label for="class">Class</label>
-            <input type="text" id="class" name="class" />
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" />
           </div>
           <div class="class-selector">
             <label for="class">Class</label>
             <select name="class" id="class">
-              <option value="">Wizard</option>
-              <option value="">Barbarian</option>
+              <option value="wizard">Wizard</option>
+              <option value="barbarian">Barbarian</option>
+            </select>
+          </div>
+          <div class="race-selector">
+            <label for="race">Race</label>
+            <select name="race" id="race">
+              <option value="tiefling">Tiefling</option>
+              <option value="dragonborn">Dragonborn</option>
             </select>
           </div>
           <div class="background-selector">
             <label for="background">Background</label>
             <select name="background" id="background">
-              <option value="">Criminal</option>
-              <option value="">Sage</option>
+              <option value="criminal">Criminal</option>
+              <option value="sage">Sage</option>
             </select>
           </div>
           <div class="level-selector">
@@ -86,12 +93,179 @@
               value="1"
               id="level"
               name="level"
+              autocomplete="off"
             />
             <span class="level-display">1</span>
           </div>
         </div>
       </div>
-      <div class="skills-wrapper"></div>
+      <fieldset class="skills-wrapper">
+        <ul>
+          <li>
+            <label
+              ><input
+                type="checkbox"
+                class="check"
+                value="acrobatics"
+              />Acrobatics</label
+            >
+          </li>
+          <li>
+            <label
+              ><input
+                type="checkbox"
+                class="check"
+                value="animal handling"
+              />Animal Handling</label
+            >
+          </li>
+          <li>
+            <label
+              ><input
+                type="checkbox"
+                class="check"
+                value="arcana"
+              />Arcana</label
+            >
+          </li>
+          <li>
+            <label
+              ><input
+                type="checkbox"
+                class="check"
+                value="athletics"
+              />Athletics</label
+            >
+          </li>
+          <li>
+            <label
+              ><input
+                type="checkbox"
+                class="check"
+                value="deception"
+              />Deception</label
+            >
+          </li>
+          <li>
+            <label
+              ><input
+                type="checkbox"
+                class="check"
+                value="history"
+              />History</label
+            >
+          </li>
+          <li>
+            <label
+              ><input
+                type="checkbox"
+                class="check"
+                value="insight"
+              />Insight</label
+            >
+          </li>
+          <li>
+            <label
+              ><input
+                type="checkbox"
+                class="check"
+                value="intimidation"
+              />Intimidation</label
+            >
+          </li>
+          <li>
+            <label
+              ><input
+                type="checkbox"
+                class="check"
+                value="investigation"
+              />Investigation</label
+            >
+          </li>
+          <li>
+            <label
+              ><input
+                type="checkbox"
+                class="check"
+                value="medicine"
+              />Medicine</label
+            >
+          </li>
+          <li>
+            <label
+              ><input
+                type="checkbox"
+                class="check"
+                value="nature"
+              />Nature</label
+            >
+          </li>
+          <li>
+            <label
+              ><input
+                type="checkbox"
+                class="check"
+                value="perception"
+              />Perception</label
+            >
+          </li>
+          <li>
+            <label
+              ><input
+                type="checkbox"
+                class="check"
+                value="performance"
+              />Performance</label
+            >
+          </li>
+          <li>
+            <label
+              ><input
+                type="checkbox"
+                class="check"
+                value="persuasion"
+              />Persuasion</label
+            >
+          </li>
+          <li>
+            <label
+              ><input
+                type="checkbox"
+                class="check"
+                value="religion"
+              />Religion</label
+            >
+          </li>
+          <li>
+            <label
+              ><input
+                type="checkbox"
+                class="check"
+                value="slight of hand"
+              />Slight of Hand</label
+            >
+          </li>
+          <li>
+            <label
+              ><input
+                type="checkbox"
+                class="check"
+                value="stealth"
+              />Stealth</label
+            >
+          </li>
+          <li>
+            <label
+              ><input
+                type="checkbox"
+                class="check"
+                value="survival"
+              />Survival</label
+            >
+          </li>
+        </ul>
+        <div class="remaining-prof">Proficiencies left: <span></span></div>
+      </fieldset>
       <div class="dice-roll">
         <button id="roll">Roll!</button>
       </div>

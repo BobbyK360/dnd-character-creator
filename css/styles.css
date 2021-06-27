@@ -140,6 +140,7 @@ body {
 
 .name-input,
 .class-selector,
+.race-selector,
 .background-selector,
 .level-selector {
   flex: 1;
@@ -160,7 +161,7 @@ body {
 .name-input input {
   width: 100%;
   max-width: 100px;
-  height: 30%;
+  height: 40%;
   text-align: center;
 }
 
@@ -170,6 +171,7 @@ body {
 
 .name-input input,
 .class-selector select,
+.race-selector select,
 .background-selector select,
 .level-selector input {
   margin: 5px;
@@ -189,6 +191,38 @@ body {
   width: 100%;
   height: 100%;
   /* background-color: thistle; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.4rem;
+  border: 0;
+  padding: 8px;
+}
+
+.skills-wrapper ul {
+  /* width: 100%; */
+  /* height: 90%; */
+  padding: 0;
+  margin: 0;
+  /* background-color: white; */
+}
+
+.skills-wrapper li {
+  display: inline-block;
+  width: 49%;
+}
+
+.skills-wrapper li input {
+  column-count: 4;
+  margin: 0 5px;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.remaining-prof {
+  /* margin: auto; */
+  padding: 0 8px;
 }
 
 .dice-roll button:focus {
