@@ -6,7 +6,7 @@ let characterArray = [];
 
 //Draggable attribute priority
 const draggableEl = document.querySelectorAll(".draggable-element");
-const dropzone = document.querySelectorAll(".select-wrapper ul");
+const dropzone = document.querySelector(".select-wrapper ul");
 
 draggableEl.forEach((dragEl) => {
   dragEl.addEventListener("mousedown", () => {
@@ -21,17 +21,15 @@ draggableEl.forEach((dragEl) => {
   });
 });
 
-dropzone.forEach((container) => {
-  container.addEventListener("dragover", (e) => {
-    e.preventDefault();
-    const afterElement = getDragAfterElement(container, e.clientY);
-    const dragEl = document.querySelector(".being-dragged");
-    if (afterElement == null) {
-      container.appendChild(dragEl);
-    } else {
-      container.insertBefore(dragEl, afterElement);
-    }
-  });
+dropzone.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  const afterElement = getDragAfterElement(dropzone, e.clientY);
+  const dragEl = document.querySelector(".being-dragged");
+  if (afterElement == null) {
+    dropzone.appendChild(dragEl);
+  } else {
+    dropzone.insertBefore(dragEl, afterElement);
+  }
 });
 
 function getDragAfterElement(dropzone, y) {
