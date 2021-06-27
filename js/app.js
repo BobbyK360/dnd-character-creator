@@ -53,12 +53,27 @@ function getDragAfterElement(dropzone, y) {
 }
 
 //Dice & Object Function
+
+//Roll four d6
+//Take the sum of the best 3 -> that's your number for a single stat.
+//This makes it so you can get a max of 18, but a min of 3.
+//Do that 6 times to fill a full array.
 function rollDice(diceType, diceNumber) {
   // Rolling the dice, pushing it to array & sorting
   let rollArray = [];
   for (let i = 0; i < diceNumber; i++) {
-    let roll = Math.floor(Math.random() * diceType) + 1;
-    rollArray.push(roll);
+    let tempRollArray = [];
+    for (let j = 0; j < 4; j++) {
+      let roll = Math.floor(Math.random() * diceType) + 1;
+      tempRollArray.push(roll);
+    }
+    tempRollArray.sort(numberCompare);
+    tempRollArray.splice(-1, 1);
+    let rolledSum = 0;
+    for (const numberRolled of tempRollArray) {
+      rolledSum += numberRolled;
+    }
+    rollArray.push(rolledSum);
   }
   rollArray.sort(numberCompare);
 
@@ -66,11 +81,8 @@ function rollDice(diceType, diceNumber) {
   bonusArray.splice(0, bonusArray.length);
   for (let i = 0; i < rollArray.length; i++) {
     let statValue = rollArray[i] - 10;
-    if (statValue < 0) {
-      statValue = Math.ceil(statValue / 2);
-    } else {
-      statValue = Math.floor(statValue / 2);
-    }
+    //We always take the number lowest. So a 9 would result in a -1 for the bonus array.
+    statValue = Math.floor(statValue / 2);
     if (statValue === -0) {
       statValue = 0;
     } //This accounts for 9 returning -0
@@ -114,7 +126,7 @@ function getClass() {
 }
 
 function getRace() {
-  const characterRace = document.getElementById('race').value;
+  const characterRace = document.getElementById("race").value;
   characterInfo.push(characterRace);
 }
 
@@ -139,7 +151,7 @@ function getProficiencies() {
 //Checking checkboxes for skill proficiencies
 const profChecks = document.querySelectorAll(".check");
 const maxChecks = 3;
-const proficienciesEl = document.querySelector('.remaining-prof span');
+const proficienciesEl = document.querySelector(".remaining-prof span");
 let checksLeftGlobal = maxChecks;
 
 for (let i = 0; i < profChecks.length; i++) {
@@ -165,12 +177,12 @@ for (let i = 0; i < profChecks.length; i++) {
 }
 
 //Update proficiencies left when race is selected.
-const characterRaceContainer = document.querySelector('.race-selector');
-const characterRace = document.querySelectorAll('.race-selector select');
+const characterRaceContainer = document.querySelector(".race-selector");
+const characterRace = document.querySelectorAll(".race-selector select");
 
 characterRaceContainer.addEventListener("click", () => {
-    proficienciesEl.innerHTML = `${checksLeftGlobal}`;
-})
+  proficienciesEl.innerHTML = `${checksLeftGlobal}`;
+});
 
 // for (let i = 0; i < characterRace.length; i++) {
 //   characterRaceContainer.addEventListener("input", () => {
@@ -187,7 +199,7 @@ rollEl.addEventListener("click", () => {
   getLevel();
   getProficiencies();
   returnAttPriorityArray();
-  rollDice(20, 6);
+  rollDice(6, 6);
   let characterObject = new Character();
   characterArray.push(characterObject);
   console.table(characterArray);
@@ -197,7 +209,7 @@ class Character {
   constructor() {
     this.name = characterInfo[0];
     this.class = characterInfo[1];
-    this.race = characterInfo[2]
+    this.race = characterInfo[2];
     this.background = characterInfo[3];
     this.level = characterInfo[4];
     this.proficiencies = characterInfo[5];
