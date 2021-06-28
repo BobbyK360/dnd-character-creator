@@ -172,15 +172,18 @@ for (let i = 0; i < profChecks.length; i++) {
       proficienciesEl.innerHTML = `${checksLeft}`;
       checksLeftGlobal = checksLeft;
     }
-    console.log(checksLeft);
   }
 }
 
-//Update proficiencies left when race is selected.
+//Update proficiencies left when race or class is selected.
 const characterRaceContainer = document.querySelector(".race-selector");
-const characterRace = document.querySelectorAll(".race-selector select");
+const characterClassContainer = document.querySelector(".class-selector");
 
 characterRaceContainer.addEventListener("click", () => {
+  proficienciesEl.innerHTML = `${checksLeftGlobal}`;
+});
+
+characterClassContainer.addEventListener("click", () => {
   proficienciesEl.innerHTML = `${checksLeftGlobal}`;
 });
 
