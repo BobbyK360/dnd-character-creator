@@ -1,9 +1,11 @@
 //Global scope
 const rollEl = document.getElementById("roll");
+const rollArray = [];
 const bonusArray = [];
 const attPriority = [];
 const characterInfo = [];
 const characterArray = [];
+
 
 //Draggable attribute priority
 const draggableEl = document.querySelectorAll(".draggable-element");
@@ -60,7 +62,7 @@ function getDragAfterElement(dropzone, y) {
 //Do that 6 times to fill a full array.
 function rollDice(diceType, diceNumber) {
   // Rolling the dice, pushing it to array & sorting
-  let rollArray = [];
+  rollArray.splice(0, rollArray.length);
   for (let i = 0; i < diceNumber; i++) {
     let tempRollArray = [];
     for (let j = 0; j < 4; j++) {
@@ -218,11 +220,17 @@ class Character {
     this.background = characterInfo[3];
     this.level = characterInfo[4];
     this.proficiencies = characterInfo[5];
+    this.strengthOrig = rollArray[attPriority.indexOf("Strength")];
     this.strength = bonusArray[attPriority.indexOf("Strength")];
+    this.dexterityOrig = rollArray[attPriority.indexOf("Dexterity")];;
     this.dexterity = bonusArray[attPriority.indexOf("Dexterity")];
+    this.constitutionOrig = rollArray[attPriority.indexOf("Constitution")];
     this.constitution = bonusArray[attPriority.indexOf("Constitution")];
+    this.intelligenceOrig = rollArray[attPriority.indexOf("Intelligence")];
     this.intelligence = bonusArray[attPriority.indexOf("Intelligence")];
+    this.wisdomOrig = rollArray[attPriority.indexOf("Wisdom")];
     this.wisdom = bonusArray[attPriority.indexOf("Wisdom")];
+    this.charismaOrig = rollArray[attPriority.indexOf("Charisma")];
     this.charisma = bonusArray[attPriority.indexOf("Charisma")];
     this.alignment = 0;
     this.faction = 0;
@@ -236,7 +244,6 @@ class Character {
 //the output boxes and assigns the innerHTML of the associated span. The only thing hard-coded is the fieldListHeaderArray
 //which should be in the same order as the sheet.
 function assignOutputFieldHeader (object) {
-  // const fieldList = Array.from(document.querySelectorAll('.sheet__character-header div h1 span'));
   const fieldList = ["name", "level", "class", "race", "background", "alignment", "faction", "exp"];
   for (i=0; i < fieldList.length; i++) {
     const outputGrabber = document.querySelector(`.sheet__character-${fieldList[i]} h1 span`);
@@ -248,10 +255,11 @@ function assignOutputFieldHeader (object) {
 }
 
 function assignOutputFieldStats (object) {
-  // const fieldList = Array.from(document.querySelectorAll('.sheet__character-stats div span:first-of-type'));
   const fieldList = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"];
   for (i=0; i < fieldList.length; i++) {
-    const outputGrabber = document.querySelector(`.sheet__character-${fieldList[i]} span:first-of-type`);
-    outputGrabber.innerHTML = object[fieldList[i]];
+    const outputGrabberBonus = document.querySelector(`.sheet__character-${fieldList[i]} span:first-of-type`);
+    const outputGrabberOrig = document.querySelector(`.sheet__character-${fieldList[i]} span:last-child`);
+    outputGrabberBonus.innerHTML = object[fieldList[i]];
+    outputGrabberOrig.innerHTML = object[`${fieldList[i]}Orig`];
   }
 }
