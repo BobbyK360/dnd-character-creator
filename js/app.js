@@ -203,9 +203,12 @@ rollEl.addEventListener("click", () => {
   getProficiencies();
   returnAttPriorityArray();
   rollDice(6, 6);
-  let characterObject = new Character();
-  characterArray.push(characterObject);
+  let CharacterObject = new Character();
+  characterArray.push(CharacterObject);
   console.table(characterArray);
+  // assignName(CharacterObject);
+  // assignLevel(CharacterObject);
+  assignOutputField(CharacterObject)
 });
 
 class Character {
@@ -216,11 +219,24 @@ class Character {
     this.background = characterInfo[3];
     this.level = characterInfo[4];
     this.proficiencies = characterInfo[5];
-    this.strength = bonusArray[attPriority.indexOf("strength")];
-    this.dexterity = bonusArray[attPriority.indexOf("dexterity")];
-    this.constitution = bonusArray[attPriority.indexOf("constitution")];
-    this.intelligence = bonusArray[attPriority.indexOf("intelligence")];
-    this.wisdom = bonusArray[attPriority.indexOf("wisdom")];
-    this.charisma = bonusArray[attPriority.indexOf("charisma")];
+    this.Strength = bonusArray[attPriority.indexOf("Strength")];
+    this.Dexterity = bonusArray[attPriority.indexOf("Dexterity")];
+    this.Constitution = bonusArray[attPriority.indexOf("Constitution")];
+    this.Intelligence = bonusArray[attPriority.indexOf("Intelligence")];
+    this.Wisdom = bonusArray[attPriority.indexOf("Wisdom")];
+    this.Charisma = bonusArray[attPriority.indexOf("Charisma")];
+  }
+}
+
+//Functions to assign values to the sheet
+//Because calling a bunch of the same assignment functions is ugly, here is a function that runs through all
+//the output boxes and assigns the innerHTML of the associated span. The only thing hard-coded is the fieldListHeaderArray
+//which should be in the same order as the sheet.
+function assignOutputField (object) {
+  const fieldList = Array.from(document.querySelectorAll('.sheet__character-header div h1 span'));
+  const fieldListHeaderArray = ["name", "level", "class", "race", "background", "alignment", "faction", "exp"];
+  for (i=0; i < fieldList.length; i++) {
+    const outputGrabber = document.querySelector(`.sheet__character-${fieldListHeaderArray[i]} h1 span`);
+    outputGrabber.innerHTML = object[fieldListHeaderArray[i]];
   }
 }

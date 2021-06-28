@@ -247,6 +247,7 @@ body {
 
 .character-sheet-container {
   height: 100%;
+  color: #fff;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -273,6 +274,10 @@ body {
 
 .sheet__character-name {
   grid-area: sheet__character-name;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+  color: #fff;
 }
 
 .sheet__character-definitions {
@@ -288,13 +293,40 @@ body {
   grid-area: sheet__character-definitions;
 }
 
+.sheet__character-definitions > div {
+  display: flex;
+}
+.sheet__character-definitions > div > h1 {
+  width: 100%;
+  justify-items: center;
+  align-self: center;
+  text-align: center;
+  font-size: 10px;
+}
+
 .sheet__character-level {
   grid-area: sheet__character-level;
+  /* display: flex; */
 }
+
+/* .sheet__character-level h1 {
+  width: 100%;
+  justify-items: center;
+  align-self: center;
+  text-align: center;
+} */
 
 .sheet__character-class {
   grid-area: sheet__character-class;
+  /* display: flex; */
 }
+
+/* .sheet__character-class h1 {
+  width: 100%;
+  justify-items: center;
+  align-self: center;
+  text-align: center;
+} */
 
 .sheet__character-race {
   grid-area: sheet__character-race;
