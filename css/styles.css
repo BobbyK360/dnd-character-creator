@@ -296,6 +296,36 @@ body {
 .sheet__character-definitions > div {
   display: flex;
 }
+
+.sheet__character-stats-total > div > div {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.sheet__character-stats-total > div > div > h1 {
+  width: 100%;
+  justify-items: center;
+  align-self: center;
+  text-align: center;
+  font-size: 10px;
+}
+
+.sheet__character-stats-total > div > div > span:first-of-type {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.sheet__character-stats-total > div > div > span:last-child {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+
 .sheet__character-definitions > div > h1 {
   width: 100%;
   justify-items: center;
@@ -533,37 +563,37 @@ body {
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
-    "sheet__character-str"
-    "sheet__character-dex"
-    "sheet__character-con"
-    "sheet__character-int"
-    "sheet__character-wis"
-    "sheet__character-cha";
+    "sheet__character-strength"
+    "sheet__character-dexterity"
+    "sheet__character-constitution"
+    "sheet__character-intelligence"
+    "sheet__character-wisdom"
+    "sheet__character-charisma";
   grid-area: sheet__character-stats;
 }
 
-.sheet__character-str {
-  grid-area: sheet__character-str;
+.sheet__character-strength {
+  grid-area: sheet__character-strength;
 }
 
-.sheet__character-dex {
-  grid-area: sheet__character-dex;
+.sheet__character-dexterity {
+  grid-area: sheet__character-dexterity;
 }
 
-.sheet__character-con {
-  grid-area: sheet__character-con;
+.sheet__character-constitution {
+  grid-area: sheet__character-constitution;
 }
 
-.sheet__character-int {
-  grid-area: sheet__character-int;
+.sheet__character-intelligence {
+  grid-area: sheet__character-intelligence;
 }
 
-.sheet__character-wis {
-  grid-area: sheet__character-wis;
+.sheet__character-wisdom {
+  grid-area: sheet__character-wisdom;
 }
 
-.sheet__character-cha {
-  grid-area: sheet__character-cha;
+.sheet__character-charisma {
+  grid-area: sheet__character-charisma;
 }
 
 .sheet__character-ac-in-sp {
