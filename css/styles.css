@@ -4,7 +4,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  /* border: 1px solid yellow; */
+  border: 1px solid yellow;
 }
 
 body {
@@ -243,4 +243,362 @@ body {
 .character-sheet {
   flex: 3;
   /* background-color: grey; */
+}
+
+.character-sheet-container {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "sheet__character-header sheet__character-header sheet__character-header"
+    "sheet__character-stats-total sheet__character-ac-in-sp sheet__character-spell-list"
+    "sheet__character-stats-total sheet__character-hp sheet__character-spell-list"
+    "sheet__character-stats-total sheet__character-weapons-items sheet__character-spell-list";
+}
+
+.sheet__character-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "sheet__character-name sheet__character-definitions sheet__character-definitions"
+    "sheet__character-name sheet__character-definitions sheet__character-definitions";
+  grid-area: sheet__character-header;
+}
+
+.sheet__character-name {
+  grid-area: sheet__character-name;
+}
+
+.sheet__character-definitions {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "sheet__character-level sheet__character-class sheet__character-race"
+    "sheet__character-background sheet__character-alignment sheet__character-faction"
+    "sheet__character-exp sheet__character-exp sheet__player-name";
+  grid-area: sheet__character-definitions;
+}
+
+.sheet__character-level {
+  grid-area: sheet__character-level;
+}
+
+.sheet__character-class {
+  grid-area: sheet__character-class;
+}
+
+.sheet__character-race {
+  grid-area: sheet__character-race;
+}
+
+.sheet__character-background {
+  grid-area: sheet__character-background;
+}
+
+.sheet__character-alignment {
+  grid-area: sheet__character-alignment;
+}
+
+.sheet__character-faction {
+  grid-area: sheet__character-faction;
+}
+
+.sheet__character-exp {
+  grid-area: sheet__character-exp;
+}
+
+.sheet__player-name {
+  grid-area: sheet__player-name;
+}
+
+.sheet__character-stats-total {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "sheet__character-stats sheet__character-prof-pasper"
+    "sheet__character-stats sheet__character-savethrow"
+    "sheet__character-stats sheet__character-skills"
+    "sheet__character-stats sheet__character-skills";
+  grid-area: sheet__character-stats-total;
+}
+
+.sheet__character-prof-pasper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "sheet__character-prof"
+    "sheet__character-pasper";
+  grid-area: sheet__character-prof-pasper;
+}
+
+.sheet__character-prof {
+  grid-area: sheet__character-prof;
+}
+
+.sheet__character-pasper {
+  grid-area: sheet__character-pasper;
+}
+
+.sheet__character-savethrow {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "sheet__character-savestr"
+    "sheet__character-savedex"
+    "sheet__character-savecon"
+    "sheet__character-saveint"
+    "sheet__character-savewis"
+    "sheet__character-savecha";
+  grid-area: sheet__character-savethrow;
+}
+
+.sheet__character-savestr {
+  grid-area: sheet__character-savestr;
+}
+
+.sheet__character-savedex {
+  grid-area: sheet__character-savedex;
+}
+
+.sheet__character-savecon {
+  grid-area: sheet__character-savecon;
+}
+
+.sheet__character-saveint {
+  grid-area: sheet__character-saveint;
+}
+
+.sheet__character-savewis {
+  grid-area: sheet__character-savewis;
+}
+
+.sheet__character-savecha {
+  grid-area: sheet__character-savecha;
+}
+
+.sheet__character-skills {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "sheet__character-acrobatics"
+    "sheet__character-anhandle"
+    "sheet__character-arcana"
+    "sheet__character-athletics"
+    "sheet__character-deception"
+    "sheet__character-history"
+    "sheet__character-insight"
+    "sheet__character-intimidation"
+    "sheet__character-investigation"
+    "sheet__character-medicine"
+    "sheet__character-nature"
+    "sheet__character-perception"
+    "sheet__character-performance"
+    "sheet__character-persuasion"
+    "sheet__character-religion"
+    "sheet__character-soh"
+    "sheet__character-stealth"
+    "sheet__character-survival";
+  grid-area: sheet__character-skills;
+}
+
+.sheet__character-acrobatics {
+  grid-area: sheet__character-acrobatics;
+}
+
+.sheet__character-anhandle {
+  grid-area: sheet__character-anhandle;
+}
+
+.sheet__character-arcana {
+  grid-area: sheet__character-arcana;
+}
+
+.sheet__character-athletics {
+  grid-area: sheet__character-athletics;
+}
+
+.sheet__character-deception {
+  grid-area: sheet__character-deception;
+}
+
+.sheet__character-history {
+  grid-area: sheet__character-history;
+}
+
+.sheet__character-insight {
+  grid-area: sheet__character-insight;
+}
+
+.sheet__character-intimidation {
+  grid-area: sheet__character-intimidation;
+}
+
+.sheet__character-investigation {
+  grid-area: sheet__character-investigation;
+}
+
+.sheet__character-medicine {
+  grid-area: sheet__character-medicine;
+}
+
+.sheet__character-nature {
+  grid-area: sheet__character-nature;
+}
+
+.sheet__character-perception {
+  grid-area: sheet__character-perception;
+}
+
+.sheet__character-performance {
+  grid-area: sheet__character-performance;
+}
+
+.sheet__character-persuasion {
+  grid-area: sheet__character-persuasion;
+}
+
+.sheet__character-religion {
+  grid-area: sheet__character-religion;
+}
+
+.sheet__character-soh {
+  grid-area: sheet__character-soh;
+}
+
+.sheet__character-stealth {
+  grid-area: sheet__character-stealth;
+}
+
+.sheet__character-survival {
+  grid-area: sheet__character-survival;
+}
+
+.sheet__character-stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "sheet__character-str"
+    "sheet__character-dex"
+    "sheet__character-con"
+    "sheet__character-int"
+    "sheet__character-wis"
+    "sheet__character-cha";
+  grid-area: sheet__character-stats;
+}
+
+.sheet__character-str {
+  grid-area: sheet__character-str;
+}
+
+.sheet__character-dex {
+  grid-area: sheet__character-dex;
+}
+
+.sheet__character-con {
+  grid-area: sheet__character-con;
+}
+
+.sheet__character-int {
+  grid-area: sheet__character-int;
+}
+
+.sheet__character-wis {
+  grid-area: sheet__character-wis;
+}
+
+.sheet__character-cha {
+  grid-area: sheet__character-cha;
+}
+
+.sheet__character-ac-in-sp {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: "sheet__character-ac sheet__character-init sheet__character-speed";
+  grid-area: sheet__character-ac-in-sp;
+}
+
+.sheet__character-ac {
+  grid-area: sheet__character-ac;
+}
+
+.sheet__character-init {
+  grid-area: sheet__character-init;
+}
+
+.sheet__character-speed {
+  grid-area: sheet__character-speed;
+}
+
+.sheet__character-hp {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "sheet__character-maxhp"
+    "sheet__character-curhp"
+    "sheet__character-hitdice-container";
+  grid-area: sheet__character-hp;
+}
+
+.sheet__character-maxhp {
+  grid-area: sheet__character-maxhp;
+}
+
+.sheet__character-curhp {
+  grid-area: sheet__character-curhp;
+}
+
+.sheet__character-hitdice-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: "sheet__character-hitdice sheet__character-hitdice-max";
+  grid-area: sheet__character-hitdice-container;
+}
+
+.sheet__character-hitdice {
+  grid-area: sheet__character-hitdice;
+}
+
+.sheet__character-hitdice-max {
+  grid-area: sheet__character-hitdice-max;
+}
+
+.sheet__character-weapons-items {
+  grid-area: sheet__character-weapons-items;
+}
+
+.sheet__character-spell-list {
+  grid-area: sheet__character-spell-list;
 }
