@@ -293,22 +293,41 @@ function assignOutputFieldStats(object) {
 
 
 function assignSkills(object) {
-  const proficiencyBonus = 2;
+  const levelValue = characterLevel.value;
+  let proficiencyBonus; 
+  
+  switch (true) {
+    case (levelValue < 5):
+      proficiencyBonus = 2;
+      break;
+    case (levelValue < 9):
+      proficiencyBonus = 3;
+      break;
+    case (levelValue < 13):
+      proficiencyBonus = 4;
+      break;
+    case (levelValue < 17):
+      proficiencyBonus = 5;
+      break;
+    case (levelValue < 21):
+      proficiencyBonus = 6;
+      break;
+  }
+
+
+
   const skillsElArray = Array.from(
     document.querySelectorAll(".sheet__character-skills > div")
   );
-  console.log(skillsElArray);
   const skillsArray = [];
   const skillsArraySpan = Array.from(
     document.querySelectorAll(".sheet__character-skills > div h1 span")
   );
-  console.log(skillsArraySpan);
   const fieldList = Object.keys(skillsModifier);
 
   for (const pushValue of skillsElArray) {
     skillsArray.push(pushValue.dataset.value);
   }
-  console.log(skillsArray);
 
   for (const attribute of fieldList) {
     for (const skill of skillsModifier[`${attribute}`]) {
