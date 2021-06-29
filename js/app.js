@@ -291,26 +291,35 @@ function assignOutputFieldStats(object) {
   }
 }
 
+
 function assignSkills(object) {
+  const proficiencyBonus = 2;
   const skillsElArray = Array.from(
     document.querySelectorAll(".sheet__character-skills > div")
   );
+  console.log(skillsElArray);
   const skillsArray = [];
   const skillsArraySpan = Array.from(
     document.querySelectorAll(".sheet__character-skills > div h1 span")
   );
+  console.log(skillsArraySpan);
   const fieldList = Object.keys(skillsModifier);
 
   for (const pushValue of skillsElArray) {
     skillsArray.push(pushValue.dataset.value);
   }
+  console.log(skillsArray);
 
   for (const attribute of fieldList) {
     for (const skill of skillsModifier[`${attribute}`]) {
       if (skillsArray.indexOf(skill) > -1) {
         const skillsIndexer = skillsArray.indexOf(skill);
 
-        skillsArraySpan[skillsIndexer].innerHTML = object[`${attribute}`];
+        if (object["proficiencies"].indexOf(skill) === -1) {
+          skillsArraySpan[skillsIndexer].innerHTML = object[`${attribute}`];
+        } else {
+          skillsArraySpan[skillsIndexer].innerHTML = object[`${attribute}`] + proficiencyBonus;
+        }
 
         skillsArraySpan.splice(skillsIndexer, 1);
         skillsArray.splice(skillsIndexer, 1);
