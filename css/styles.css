@@ -308,7 +308,7 @@ body {
   justify-items: center;
   align-self: center;
   text-align: center;
-  font-size: 10px;
+  font-size: 8px;
 }
 
 .sheet__character-stats-total > div > div > span:first-of-type {
@@ -325,6 +325,12 @@ body {
   right: 0;
 }
 
+.sheet__character-skills > div h1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 
 .sheet__character-definitions > div > h1 {
   width: 100%;
@@ -333,6 +339,8 @@ body {
   text-align: center;
   font-size: 10px;
 }
+
+
 
 .sheet__character-level {
   grid-area: sheet__character-level;
@@ -482,6 +490,11 @@ body {
     "sheet__character-stealth"
     "sheet__character-survival";
   grid-area: sheet__character-skills;
+}
+
+.sheet__character-skills > div h1 {
+  display: flex;
+  justify-content: space-between;
 }
 
 .sheet__character-acrobatics {

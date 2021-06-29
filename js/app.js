@@ -6,7 +6,6 @@ const attPriority = [];
 const characterInfo = [];
 const characterArray = [];
 
-
 //Draggable attribute priority
 const draggableEl = document.querySelectorAll(".draggable-element");
 const dropzone = document.querySelector(".select-wrapper ul");
@@ -210,6 +209,7 @@ rollEl.addEventListener("click", () => {
   console.table(characterArray);
   assignOutputFieldHeader(CharacterObject);
   assignOutputFieldStats(CharacterObject);
+  assignSkills(CharacterObject);
 });
 
 class Character {
@@ -222,7 +222,7 @@ class Character {
     this.proficiencies = characterInfo[5];
     this.strengthOrig = rollArray[attPriority.indexOf("Strength")];
     this.strength = bonusArray[attPriority.indexOf("Strength")];
-    this.dexterityOrig = rollArray[attPriority.indexOf("Dexterity")];;
+    this.dexterityOrig = rollArray[attPriority.indexOf("Dexterity")];
     this.dexterity = bonusArray[attPriority.indexOf("Dexterity")];
     this.constitutionOrig = rollArray[attPriority.indexOf("Constitution")];
     this.constitution = bonusArray[attPriority.indexOf("Constitution")];
@@ -243,10 +243,21 @@ class Character {
 //Because calling a bunch of the same assignment functions is ugly, here is a function that runs through all
 //the output boxes and assigns the innerHTML of the associated span. The only thing hard-coded is the fieldListHeaderArray
 //which should be in the same order as the sheet.
-function assignOutputFieldHeader (object) {
-  const fieldList = ["name", "level", "class", "race", "background", "alignment", "faction", "exp"];
-  for (i=0; i < fieldList.length; i++) {
-    const outputGrabber = document.querySelector(`.sheet__character-${fieldList[i]} h1 span`);
+function assignOutputFieldHeader(object) {
+  const fieldList = [
+    "name",
+    "level",
+    "class",
+    "race",
+    "background",
+    "alignment",
+    "faction",
+    "exp",
+  ];
+  for (i = 0; i < fieldList.length; i++) {
+    const outputGrabber = document.querySelector(
+      `.sheet__character-${fieldList[i]} h1 span`
+    );
     outputGrabber.innerHTML = object[fieldList[i]];
   }
   //Set the player name separately as it follows a different naming convention.
@@ -254,12 +265,100 @@ function assignOutputFieldHeader (object) {
   playerName.innerHTML = object[playerName];
 }
 
-function assignOutputFieldStats (object) {
-  const fieldList = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"];
-  for (i=0; i < fieldList.length; i++) {
-    const outputGrabberBonus = document.querySelector(`.sheet__character-${fieldList[i]} span:first-of-type`);
-    const outputGrabberOrig = document.querySelector(`.sheet__character-${fieldList[i]} span:last-child`);
+function assignOutputFieldStats(object) {
+  const fieldList = [
+    "strength",
+    "dexterity",
+    "constitution",
+    "intelligence",
+    "wisdom",
+    "charisma",
+  ];
+  for (i = 0; i < fieldList.length; i++) {
+    const outputGrabberBonus = document.querySelector(
+      `.sheet__character-${fieldList[i]} span:first-of-type`
+    );
+    const outputGrabberOrig = document.querySelector(
+      `.sheet__character-${fieldList[i]} span:last-child`
+    );
     outputGrabberBonus.innerHTML = object[fieldList[i]];
     outputGrabberOrig.innerHTML = object[`${fieldList[i]}Orig`];
   }
+}
+
+const skillsModifier = {
+  strength: ["athletics"],
+  dexterity: ["acrobatics", "slight of hand", "stealth"],
+  constitution: [],
+  intelligence: ["arcana", "history", "investigation", "nature", "religion"],
+  wisdom: ["animal handling", "insight", "medicine", "perception", "survival"],
+  charisma: ["deception", "intimidation", "performance", "persuasion"],
+};
+
+function assignSkills(object) {
+  const skillsElArray = Array.from(
+    document.querySelectorAll(".sheet__character-skills > div")
+  );
+  const skillsArray = [];
+  const skillsArraySpan = Array.from(
+    document.querySelectorAll(".sheet__character-skills > div h1 span")
+  );
+  for (i = 0; i < skillsElArray.length; i++) {
+    const skillsElValue = skillsElArray[i].dataset.value;
+    skillsArray.push(skillsElValue);
+  }
+  console.log(skillsArray);
+
+  const fieldList = [
+    "strength",
+    "dexterity",
+    "constitution",
+    "intelligence",
+    "wisdom",
+    "charisma",
+  ];
+
+  for (let attribute of fieldList) {
+    for (var i = 0; i < skillsModifier[`${attribute}`].length; i++) {
+      let indexer = skillsModifier[`${attribute}`][i];
+      if (skillsArray.indexOf(indexer) > -1) {
+  
+        let skillsIndexer = skillsArray.indexOf(indexer);
+        console.log(skillsIndexer);
+  
+        skillsArraySpan[skillsIndexer].innerHTML = object[`${attribute}`];
+        
+        skillsArraySpan.splice(skillsIndexer, 1);
+        skillsArray.splice(skillsIndexer, 1);
+      }
+    }
+  }
+
+  for (var i = 0; i < skillsModifier["intelligence"].length; i++) {
+    let indexer = skillsModifier["intelligence"][i];
+    if (skillsArray.indexOf(indexer) > -1) {
+
+      let skillsIndexer = skillsArray.indexOf(indexer);
+      console.log(skillsIndexer);
+
+      skillsArraySpan[skillsIndexer].innerHTML = object["intelligence"];
+      
+      skillsArraySpan.splice(skillsIndexer, 1);
+      skillsArray.splice(skillsIndexer, 1);
+    }
+  }
+  console.log(skillsArray);
+  console.log(skillsArraySpan);
+
+
+  //loop over strength array
+  //if any matches:
+    //find the index of all strength matches in skillsArray
+    //slice and discard values of skills array
+    //move on to dexterity
+    //etc
+  //if no matches
+    //move on to dexterity
+    //repeat
+
 }
